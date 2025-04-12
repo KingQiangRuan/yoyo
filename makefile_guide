@@ -1,0 +1,28 @@
+
+CC_HOME_PATH=usr/local/gcc-13.2.0
+CC=$CC_HOME_PATH/bin/g++
+
+INCLUDE_PATH=-I/usr/local/systemc-3.0.0/include
+LIB_PATH=-L/usr/local/systemc-3.0.0/lib-linux64 \
+
+CXX_FALGS=-g -std=c++11
+
+# runtime library path
+LINK_FLAGS=-Wl,-rpath,/usr/local/systemc-3.0.0/lib-linux64
+LIBS=-lsystemc
+
+SOURCES=./test.cpp
+OBJECTS=./test.o
+
+TARGET=test
+
+$(TARGET):$(OBJECTS)
+    $(CC) $(LINK_FLAGS) $(LIB_PATH) $(LIBS) $^ -o $@
+
+$(OBJECTS):$(SOURCES)
+    $(CC) $(CXX_FALGS) -c $< -o $@
+    
+.PHONE:clean
+
+clean:
+    rm -f *.o $(TARGET)
