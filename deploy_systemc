@@ -1,0 +1,21 @@
+# download systemc install pakage
+
+wget https://github.com/accellera-official/systemc/archive/refs/tags/3.0.0.tar.gz?
+
+# complie
+mkdir build && cd build  
+  ../configure --prefix=/user/local/systemc-3.0 CXXFLAGS="-std=c++17"
+
+# make -j6 && make install
+
+# configure environment
+export SYSTEMC_HOME=/usr/local/systemc-3.0.0 
+export $LD_LIBRARY_PATH=$LD_LIBRARY_PATH:SYSTEMC_HOME/lib-linux64
+
+# install gcc
+
+
+
+
+
+
